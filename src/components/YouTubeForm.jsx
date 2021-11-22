@@ -1,19 +1,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { initialValues, onSubmit, validate } from './validate-youtube-form';
 
 const YouTubeForm = () => {
 	const formik = useFormik({
-		initialValues: {
-			name: '',
-			email: '',
-			channel: '',
-		},
-		onSubmit: (values) => {
-			console.log('Form Data: ', values);
-		},
+		initialValues, // initial values and change Handler
+		onSubmit, //Submit the form
+		validate, // Validating the form
 	});
-
-	// console.log('Form Values', formik.values);
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
@@ -26,7 +20,7 @@ const YouTubeForm = () => {
 			<label htmlFor='channel'>Channel</label>
 			<input type='text' id='channel' name='channel' onChange={formik.handleChange} value={formik.values.channel} />
 
-			<button type="submit">Submit</button>
+			<button type='submit'>Submit</button>
 		</form>
 	);
 };
