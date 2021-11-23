@@ -57,6 +57,16 @@ const YouTubeForm = () => {
 					<Field type='text' id='twitter-profile' name='social.twitter' />
 				</div>
 
+				<div className='form-control'>
+					<label htmlFor='primary-phone'>Primary Phone</label>
+					<Field type='text' id='primary-phone' name='phoneNumbers[0]' />
+				</div>
+
+				<div className='form-control'>
+					<label htmlFor='secondary-phone'>Secondary Phone</label>
+					<Field type='text' id='secondary-phone' name='phoneNumbers[1]' />
+				</div>
+
 				<button type='submit'>Submit</button>
 			</Form>
 		</Formik>

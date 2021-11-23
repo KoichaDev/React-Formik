@@ -9,7 +9,8 @@ export const initialValues = {
     social: {
         facebook: '',
         twitter: ''
-    }
+    },
+    phoneNumbers: ['', '']
 };
 
 export const onSubmit = (values) => {
