@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import { initialValues, onSubmit, validationSchema } from './validate-youtube-form';
 import TextError from './TextError';
 
@@ -65,6 +65,44 @@ const YouTubeForm = () => {
 				<div className='form-control'>
 					<label htmlFor='secondary-phone'>Secondary Phone</label>
 					<Field type='text' id='secondary-phone' name='phoneNumbers[1]' />
+				</div>
+
+				<div className='form-control'>
+					<label htmlFor='list-phone-numbers'>List of phone numbers</label>
+					<FieldArray name='phNumbers'>
+						{(fieldArrayProps) => {
+							console.log('FieldarrayProps: ', fieldArrayProps);
+
+							const {
+								push,
+								remove,
+								form: {
+									values: { phNumbers },
+								},
+							} = fieldArrayProps;
+
+							return (
+								<div>
+									{phNumbers.map((phNumber, index) => {
+										return (
+											<div key={index}>
+												<Field name={`phNumbers[${index}]`} />
+												{index > 0 && (
+													<button type='button' onClick={() => remove(index)}>
+ 														-
+													</button>
+												)}
+												<button type='button' onClick={() => push(index)}>
+													{' '}
+													+{' '}
+												</button>
+											</div>
+										);
+									})}
+								</div>
+							);
+						}}
+					</FieldArray>
 				</div>
 
 				<button type='submit'>Submit</button>

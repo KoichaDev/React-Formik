@@ -10,7 +10,8 @@ export const initialValues = {
         facebook: '',
         twitter: ''
     },
-    phoneNumbers: ['', '']
+    phoneNumbers: ['', ''],
+    phNumbers: ['']
 };
 
 export const onSubmit = (values) => {
