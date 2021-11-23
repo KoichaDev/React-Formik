@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { initialValues, onSubmit, validationSchema } from './validate-youtube-form';
+import TextError from './TextError';
 
 const YouTubeForm = () => {
 	return (
@@ -9,13 +10,18 @@ const YouTubeForm = () => {
 				<div className='form-control'>
 					<label htmlFor='name'>Name</label>
 					<Field type='text' id='name' name='name' />
-					<ErrorMessage name='name' />
+					<ErrorMessage name='name' as='div' className='error' />
 				</div>
 
 				<div className='form-control'>
 					<label htmlFor='email'>E-mail</label>
 					<Field type='email' id='email' name='email' />
-					<ErrorMessage name='email' />
+                    {/* This is alternative solution to do if we want to have more refined control */}
+					<ErrorMessage name='email'>
+                        {
+                            (errorMessage) => <div className='error'>{errorMessage}</div>
+                        }
+                    </ErrorMessage>
 				</div>
 
 				<div className='form-control'>
