@@ -29,6 +29,21 @@ const YouTubeForm = () => {
 					<Field as='textarea' id='comments' name='comments' />
 				</div>
 
+				<div className='form-control'>
+					<label htmlFor='address'>Address</label>
+					<Field name='address'>
+						{(props) => {
+							const { field, form, meta } = props;
+							return (
+								<div>
+									<input type='text' id='address' {...field} />
+									{meta.touched && meta.error ? <div>{meta.error}</div> : null}
+								</div>
+							);
+						}}
+					</Field>
+				</div>
+
 				<button type='submit'>Submit</button>
 			</Form>
 		</Formik>
