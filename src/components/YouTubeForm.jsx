@@ -1,12 +1,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { initialValues, onSubmit, validate } from './validate-youtube-form';
+import { initialValues, onSubmit, validate, validationSchema } from './validate-youtube-form';
 
 const YouTubeForm = () => {
 	const formik = useFormik({
 		initialValues, // initial values and change Handler
 		onSubmit, //Submit the form
-		validate, // Validating the form
+		// validate, // Validating the form
+		validationSchema, // Validating by using Yup packages
 	});
 
 	console.log('Visited Fields: ', formik.touched);
@@ -35,7 +36,7 @@ const YouTubeForm = () => {
 					onBlur={formik.handleBlur}
 					value={formik.values.channel}
 				/>
-				{formik.touched.channel &&  formik.errors.channel ? <p className='error'>{formik.errors.channel}</p> : null}
+				{formik.touched.channel && formik.errors.channel ? <p className='error'>{formik.errors.channel}</p> : null}
 			</div>
 
 			<button type='submit'>Submit</button>

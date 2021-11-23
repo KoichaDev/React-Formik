@@ -1,3 +1,4 @@
+import * as Yup from 'yup'
 
 export const initialValues = {
     name: '',
@@ -26,3 +27,9 @@ export const validate = (values) => {
 
     return errors;
 }
+
+export const validationSchema = Yup.object({
+    name: Yup.string().required('Required name!'),
+    email: Yup.string().email('Invalid Email format').required('Required'),
+    channel: Yup.string().required('Required')
+})
