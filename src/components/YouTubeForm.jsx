@@ -5,7 +5,13 @@ import TextError from './TextError';
 
 const YouTubeForm = () => {
 	return (
-		<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+		<Formik
+			initialValues={initialValues}
+			validationSchema={validationSchema}
+			onSubmit={onSubmit} 
+			validateOnChange={false} // Instructing formik to not run the validation function on change event
+            validateOnBlur={false} // Validation will never run even on a blur event
+		>
 			<Form>
 				<div className='form-control'>
 					<label htmlFor='name'>Name</label>
@@ -35,7 +41,7 @@ const YouTubeForm = () => {
 					<label htmlFor='address'>Address</label>
 					<FastField name='address'>
 						{(props) => {
-                            console.log('Field render');
+							console.log('Field render');
 							const { field, form, meta } = props;
 							return (
 								<div>
@@ -80,6 +86,7 @@ const YouTubeForm = () => {
 								},
 							} = fieldArrayProps;
 
+							console.log('Form Errors: ', fieldArrayProps.form.errors);
 							return (
 								<div>
 									{phNumbers.map((phNumber, index) => {
@@ -88,7 +95,7 @@ const YouTubeForm = () => {
 												<Field name={`phNumbers[${index}]`} />
 												{index > 0 && (
 													<button type='button' onClick={() => remove(index)}>
- 														-
+														-
 													</button>
 												)}
 												<button type='button' onClick={() => push(index)}>
