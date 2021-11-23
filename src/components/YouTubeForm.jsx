@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { initialValues, onSubmit, validationSchema } from './validate-youtube-form';
 
 const YouTubeForm = () => {
-
 	return (
 		<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
 			<Form>
@@ -21,8 +20,13 @@ const YouTubeForm = () => {
 
 				<div className='form-control'>
 					<label htmlFor='channel'>Channel</label>
-					<Field type='text' id='channel' name='channel' />
+					<Field type='text' id='channel' name='channel' placeholder='YouTube channel name' />
 					<ErrorMessage name='channel' />
+				</div>
+
+				<div className='form-control'>
+					<label htmlFor='comments'>Comments</label>
+					<Field as='textarea' id='comments' name='comments' />
 				</div>
 
 				<button type='submit'>Submit</button>

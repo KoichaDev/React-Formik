@@ -4,6 +4,7 @@ export const initialValues = {
     name: '',
     email: '',
     channel: '',
+    comments: '',
 };
 
 export const onSubmit = (values) => {
