@@ -16,12 +16,8 @@ const YouTubeForm = () => {
 				<div className='form-control'>
 					<label htmlFor='email'>E-mail</label>
 					<Field type='email' id='email' name='email' />
-                    {/* This is alternative solution to do if we want to have more refined control */}
-					<ErrorMessage name='email'>
-                        {
-                            (errorMessage) => <div className='error'>{errorMessage}</div>
-                        }
-                    </ErrorMessage>
+					{/* This is alternative solution to do if we want to have more refined control */}
+					<ErrorMessage name='email'>{(errorMessage) => <div className='error'>{errorMessage}</div>}</ErrorMessage>
 				</div>
 
 				<div className='form-control'>
@@ -48,6 +44,17 @@ const YouTubeForm = () => {
 							);
 						}}
 					</Field>
+				</div>
+
+				<div className='form-control'>
+					<label htmlFor='facebook-profile'>Facebook Profile</label>
+					{/* This is important to write social.facebook on the name props. This is because we are dealing with the nested object */}
+					<Field type='text' id='facebook-profile' name='social.facebook' />
+				</div>
+
+				<div className='form-control'>
+					<label htmlFor='twitter-profile'>Twitter Profile</label>
+					<Field type='text' id='twitter-profile' name='social.twitter' />
 				</div>
 
 				<button type='submit'>Submit</button>
