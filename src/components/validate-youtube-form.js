@@ -14,6 +14,21 @@ export const initialValues = {
     phNumbers: ['']
 };
 
+
+export const savedValues = {
+    name: 'John Doe',
+    email: 'example@example.com',
+    channel: 'Example Channel',
+    comments: 'Welcome to Formik',
+    address: '221 Baker Street',
+    social: {
+        facebook: '',
+        twitter: ''
+    },
+    phoneNumbers: ['', ''],
+    phNumbers: ['']
+};
+
 export const onSubmit = (values, onSubmitProps) => {
     console.log('Form Data: ', values);
     console.log('Submit props: ',onSubmitProps);
