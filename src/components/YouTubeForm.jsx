@@ -146,6 +146,8 @@ const YouTubeForm = () => {
 							Load Saved Data
 						</button>
 
+						<button type='reset' onClick={() => setFormValues(initialValues)}>Reset</button>
+
 						{/*
 						 formik.isValid indicates if our form is valid or not
 						 formik.isSubmitting indicates wheather the form is currently being submitted or not
