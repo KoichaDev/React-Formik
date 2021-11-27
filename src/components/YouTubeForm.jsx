@@ -9,6 +9,7 @@ const YouTubeForm = () => {
 			initialValues={initialValues}
 			validationSchema={validationSchema}
 			onSubmit={onSubmit}
+			validateOnMount // since this is a boolean prop, we don't need reallt need to set is equal to true. Formik will run against all field valdiation and populate each object
 			// validateOnChange={false} // Instructing formik to not run the validation function on change event
 			// validateOnBlur={false} // Validation will never run even on a blur event
 		>
