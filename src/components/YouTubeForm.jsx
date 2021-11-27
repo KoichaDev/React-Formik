@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik';
-import { initialValues, onSubmit, validationSchema } from './validate-youtube-form';
+import { initialValues, onSubmit, validationSchema, validateComments } from './validate-youtube-form';
 import TextError from './TextError';
 
 const YouTubeForm = () => {
@@ -8,9 +8,9 @@ const YouTubeForm = () => {
 		<Formik
 			initialValues={initialValues}
 			validationSchema={validationSchema}
-			onSubmit={onSubmit} 
-			validateOnChange={false} // Instructing formik to not run the validation function on change event
-            validateOnBlur={false} // Validation will never run even on a blur event
+			onSubmit={onSubmit}
+			// validateOnChange={false} // Instructing formik to not run the validation function on change event
+			// validateOnBlur={false} // Validation will never run even on a blur event
 		>
 			<Form>
 				<div className='form-control'>
@@ -34,7 +34,8 @@ const YouTubeForm = () => {
 
 				<div className='form-control'>
 					<label htmlFor='comments'>Comments</label>
-					<Field as='textarea' id='comments' name='comments' />
+					<Field as='textarea' id='comments' name='comments' validate={validateComments} />
+					<ErrorMessage name='comments' component={TextError} />
 				</div>
 
 				<div className='form-control'>

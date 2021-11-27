@@ -39,5 +39,16 @@ export const validate = (values) => {
 export const validationSchema = Yup.object({
     name: Yup.string().required('Required name!'),
     email: Yup.string().email('Invalid Email format').required('Required'),
-    channel: Yup.string().required('Required')
+    channel: Yup.string().required('Required'),
+    comments: Yup.string().required('Required'),
 })
+
+export const validateComments = value => {
+    let error;
+
+    if(!value) {
+        error = 'Required'
+    }
+
+    return error; 
+}
