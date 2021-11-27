@@ -138,7 +138,11 @@ const YouTubeForm = () => {
 							}>
 							Visit Fields
 						</button>
-						<button type='submit' disabled={!(formik.dirty && formik.isValid)}>Submit</button>
+						{/*
+						 formik.isValid indicates if our form is valid or not
+						 formik.isSubmitting indicates wheather the form is currently being submitted or not
+						*/}
+						<button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
 					</Form>
 				);
 			}}

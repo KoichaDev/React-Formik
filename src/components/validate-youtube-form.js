@@ -14,8 +14,11 @@ export const initialValues = {
     phNumbers: ['']
 };
 
-export const onSubmit = (values) => {
+export const onSubmit = (values, onSubmitProps) => {
     console.log('Form Data: ', values);
+    console.log('Submit props: ',onSubmitProps);
+    // This will update the submit button to false which in turn enable the submit button to work again
+    onSubmitProps.setSubmitting(false)
 };
 
 export const validate = (values) => {
