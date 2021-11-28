@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import TextArea from './TextArea';
 
 const FormikControl = (props) => {
 	const { control, ...rest } = props;
@@ -8,6 +9,7 @@ const FormikControl = (props) => {
 		case 'input':
 			return <Input {...rest} />;
 		case 'textarea':
+			return <TextArea {...rest} />;
 			break;
 		case 'select':
 			break;
