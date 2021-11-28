@@ -1,26 +1,30 @@
-import React from 'react'
-import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
+import React from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import FormikControl from './FormikControl';
 
 const FormikContainer = () => {
-    const initialValues = {}
-    const validationSchema = Yup.object({})
-    const onSubmitHandler = values => console.log('Form data: ', values)
+	const initialValues = {
+		email: '',
+	};
+	const validationSchema = Yup.object({
+		email: Yup.string().required('required'),
+	});
 
-    return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmitHandler}>
-            {
-                formik => {
-                    return <Form>
-                        <submit type="submit">Submit</submit>
-                    </Form>
-                }
-            }
-        </Formik>
-    )
-}
+	const onSubmitHandler = (values) => console.log('Form data: ', values);
 
-export default FormikContainer
+	return (
+		<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmitHandler}>
+			{(formik) => {
+				return (
+					<Form>
+						<FormikControl control='input' type='email' label='Email' name='email' />
+						<button type='submit'>Submit</button>
+					</Form>
+				);
+			}}
+		</Formik>
+	);
+};
+
+export default FormikContainer;
