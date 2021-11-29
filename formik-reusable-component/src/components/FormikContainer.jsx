@@ -29,6 +29,7 @@ const FormikContainer = () => {
 		selectOption: '',
 		radioOption: '',
 		checkboxOption: [],
+		birthDate: null,
 	};
 	const validationSchema = Yup.object({
 		email: Yup.string().required('Required'),
@@ -36,9 +37,16 @@ const FormikContainer = () => {
 		selectOption: Yup.string().required('Required'),
 		radioOption: Yup.string().required('Required'),
 		checkboxOption: Yup.array().min(1, 'Required').required('Required'),
+		birthDate: Yup.date().required('Required').nullable()
 	});
 
-	const onSubmitHandler = (values) => console.log('Form data: ', values);
+	const onSubmitHandler = (values) => {
+		console.log('Form data: ', values);
+		// We want to make the date as string value. When trying to reinitialize the form of saved data
+		// The application is going to break. This is why we haave to make JSON parse to convert all date to JavaScript Date
+		// and then stringify
+		console.log('Saved data', JSON.parse(JSON.stringify(values)));
+	};
 
 	return (
 		<Formik
@@ -71,6 +79,12 @@ const FormikContainer = () => {
 							label='Checkbox topics'
 							name='checkboxOption'
 							options={checkboxOptions}
+						/>
+
+						<FormikControl
+							control='date'
+							label='Pick a date'
+							name='birthDate'
 						/>
 
 						<button type='submit'>Submit</button>
