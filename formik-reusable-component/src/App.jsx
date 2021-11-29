@@ -1,5 +1,5 @@
 import React from 'react';
-import FormikContainer from './components/FormikContainer';
+import FormikContainer from './components/FormikControl/FormikContainer';
 import './App.css';
 
 const App = () => {
